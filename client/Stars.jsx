@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+
+const { styled } = window;
 
 const Checked = styled.div`
   color: #da3743;

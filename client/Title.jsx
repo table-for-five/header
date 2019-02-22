@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+
+const { styled } = window;
 
 const Name = styled.h1`
 color: #2d333f;

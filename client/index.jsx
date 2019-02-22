@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+const { styled } = window;
 
-//window.Header = App
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('app')
+// );
+
+window.Header = App

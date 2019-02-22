@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Title from './Title.jsx';
 import $ from 'jquery';
 import Stars from './Stars.jsx';
@@ -8,6 +8,8 @@ import Price from './Price.jsx';
 import Type from './Type.jsx';
 import Tags from './Tags.jsx';
 import Description from './Description.jsx';
+
+const { styled } = window;
 
 
 const Border = styled.div`
@@ -108,7 +110,7 @@ class App extends React.Component {
   getRestaurantByObjectId() {
     $.ajax({
       // hardcoded 17
-      url: '/overview/17',
+      url: 'http://localhost:3000/overview/17',
       method: 'GET',
       contentType: 'application/json',
       success: (data) => {
@@ -156,13 +158,13 @@ class App extends React.Component {
           </div>
         </ParentBorder>
         {/* CODE BELOW SHOULD BE INGORED -- ONLY USED FOR SCROLL TESTING */}
-        <div ref={this.photosClicked}>Photos</div>
+        {/* <div ref={this.photosClicked}>Photos</div>
         <div style={{height:'2000px'}}></div>
         <div ref={this.menuClicked}>Menu</div>
         <div style={{height:'2000px'}}></div>
         <div ref={this.reviewsClicked}>Reviews</div>
         <div style={{height:'2000px'}}></div>
-        <div ref={this.twitterClicked}>Twitter</div>
+        <div ref={this.twitterClicked}>Twitter</div> */}
       </div>
     )
   }

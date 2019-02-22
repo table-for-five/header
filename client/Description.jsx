@@ -1,6 +1,7 @@
 import React from 'react'
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
+const { styled } = window;
 
 const ParagraphText = styled.div`
   color: #2d333f;

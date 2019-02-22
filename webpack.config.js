@@ -21,5 +21,8 @@ module.exports = {
         },
       }
     ],
+  },
+  externals: {
+    'styled-components': true
   }
 };
