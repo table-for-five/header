@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "jquery": "^3.3.1",
     "mongoose": "^5.4.14",
     "styled-components": "^4.1.3"
   }
