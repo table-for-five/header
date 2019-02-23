@@ -20,8 +20,9 @@ const Border = styled.div`
   width: 622px;
   height: 48px;
   position: absolute;
-  top: 56%;
-  left: 50%;
+  background-color: white;
+  top: 481px;
+  left: 408px;
   margin: -200px -200px -200px -200px;
   //background-color: black;
 `;
@@ -59,11 +60,12 @@ const ParentBorder = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   //border: 1px solid black;
+  background-color: white;
   width: 620px;
   height: 400px;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 430px;
+  left: 408px;
   margin: -100px 0 0 -200px;
 `;
 
@@ -71,6 +73,14 @@ const ParentBorder = styled.div`
 class App extends React.Component {
   constructor(props) {
     super(props);
+    let id = 1;
+
+    const pathName = window.location.pathname.split('/');
+    const restaurantId = parseInt(pathName[1], 10);
+    if (!Number.isNaN(restaurantId)) {
+      id = restaurantId
+    }
+
     this.menuClicked = React.createRef();
     this.photosClicked = React.createRef();
     this.reviewsClicked = React.createRef();
@@ -78,6 +88,7 @@ class App extends React.Component {
     this.twitterClicked = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.state = {
+      resId: id,
       overviewClicked: true,
       photosClicked: false,
       menuClicked: false,
@@ -104,13 +115,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getRestaurantByObjectId();
+    this.getRestaurantByObjectId(this.state.resId);
   }
 
-  getRestaurantByObjectId() {
+  getRestaurantByObjectId(id) {
     $.ajax({
       // hardcoded 17
-      url: 'http://localhost:3000/overview/17',
+      url: `http://localhost:3000/overview/${id}`,
       method: 'GET',
       contentType: 'application/json',
       success: (data) => {
