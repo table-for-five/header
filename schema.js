@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/restaurants');
+mongoose.connect('mongodb://172.17.0.3/restaurants');
 var faker = require('faker');
 // var db = mongoose.connection;
 
@@ -33,10 +33,12 @@ var Restaurant = mongoose.model('Restaurant', {
 	street_address: String
 });
 
+objArray = [];
 
 for(var i = 1; i <= 100; i++) {
 
-var dummyData = new Restaurant({
+objArray.push(
+{
 	id: i,
 	name: faker.lorem.word(),
 	rating: Math.random()*(3.9-3.1+1)+3,
@@ -66,12 +68,22 @@ var dummyData = new Restaurant({
 	street_address: faker.address.streetAddress()
 	});
 
-dummyData.save(function (err) {
+// dummyData.save(function (err) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log('SAVED');
+//   }
+// });
+
+}
+
+mongoose.model.saveMany(objArray, function (err) {
   if (err) {
     console.log(err);
   } else {
-    console.log('SAVED');
+		console.log('SAVED');
+		mongoose.connection.close();
   }
-});
+})
 
-}
